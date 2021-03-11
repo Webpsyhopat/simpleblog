@@ -15,6 +15,8 @@ function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }) {
   let [body, setBody] = useState(post.body)
   let [postId, setpostId] = useState(post.id)
 
+  let rows = 10
+
   const activateEditMode = () => setEditMode(true)
   const deactivateEditMode = () => setEditMode(false)
   const changeTitle = (e) => setTitle(e.currentTarget.value)
@@ -50,8 +52,7 @@ function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }) {
           </div>
           <label>Post body</label>
           <div>
-          <textarea name='body' value={body} onChange={changeBody} 
-          rows="10" cols="50"  className = {s.inputBody}/>
+          <textarea name='body' rows={rows} value={body} onChange={changeBody} className = {s.inputBody}/>
           </div>
           <div>
           <span onClick={updatePost} className = {s.submitSpan}>Save changes</span>
