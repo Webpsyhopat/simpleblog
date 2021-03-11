@@ -62,6 +62,7 @@ function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }) {
        {!editMode && <div>
         <AddComment postId = {postId} createCommentAC = {createCommentAC} />
         <div>
+          <div><h2>Lastest comments:</h2></div>
           {commentsArr}
         </div>
       </div>}

@@ -17,7 +17,7 @@ border-radius: 3px;
 width: 50px;
 padding: 5px 10px
 `
-const H3 = styled.h3`
+const H2 = styled.h2`
 margin: 10px;
 `
 
@@ -39,7 +39,7 @@ function AddComment({ postId, createCommentAC, ...props }) {
     }
 
     return <div>
-        <H3>Add comment</H3>
+        <H2>Add comment</H2>
         <Textarea name='commentBody' value={commentBody}
             onChange={changeBody} rows="4" cols="50"
             placeholder='Input your comment' />

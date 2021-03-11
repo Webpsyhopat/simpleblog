@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { createPostAC } from '../../redux/postReducer'
 import { useRouter } from "next/router"
 import s from '../../styles/new.module.css'
+import Link from "next/link"
 
 function AddPost(props) {
 
@@ -11,6 +12,8 @@ function AddPost(props) {
 
     let [title, setTitle] = useState('')
     let [body, setBody] = useState('')
+
+    let rows = 10
 
     const changeTitle = (e) => setTitle(e.currentTarget.value)
     const changeBody = (e) => setBody(e.currentTarget.value)
@@ -20,6 +23,7 @@ function AddPost(props) {
     }
 
     return <MainLayout title={'Add new post'}>
+        <Link href='/'><a className = {s.colorizedA}>Go back to all posts</a></Link>
         <h1>Create new post</h1>
         <label>Post title</label>
         <div>
@@ -30,7 +34,7 @@ function AddPost(props) {
         <label>Post body</label>
         <div>
             <textarea name='body' value={body} 
-            onChange={changeBody} rows="4" cols="50" 
+            onChange={changeBody} rows={rows}
             placeholder = 'Input post text' 
             className = {s.inputBody}/>
         </div>
