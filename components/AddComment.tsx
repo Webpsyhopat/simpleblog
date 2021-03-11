@@ -34,6 +34,7 @@ function AddComment({ postId, createCommentAC, ...props }) {
     const AddComment = async () => {
         let res = await createCommentAC(id, commentBody)
         if (res.status === 201) {
+            setBody('')
             router.push(`/posts/${id}`)
         }
     }
