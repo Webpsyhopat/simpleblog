@@ -1,13 +1,12 @@
 .wrapper {
     width: 100%;
-    /* min-height: 100%; */
     margin: 0px;
     display: grid;
     grid-template-columns: repeat(14, 1fr);
       grid-template-rows: 50px auto;
       grid-template-areas:
-          ". . h h h h h h h h h h . ."
-          ". . . c c c c c c c c . . .";
+          ". . . h h h h h h h h . . ."
+          ". . . . c c c c c c . . . .";
     grid-gap: 20px;
 }
 
@@ -19,7 +18,7 @@
 }
 .header {
       grid-area: h;
-      background-color: #444;
+      background-color: #15171a;
       margin: 0px;
       padding-left: 20px;
       padding-bottom: 10px;
@@ -27,5 +26,35 @@
 }
 
 .colorizedA {
-  color: #444;
+  color: #3eb0ef;
+  font-size: 18px;
+  /* text-decoration: double; */
+}
+
+.colorizedA:hover {
+  font-weight: bold;
+  
+}
+
+.postTextDiv {
+  padding: 10px;
+  border-bottom: 1px solid #eaeff1;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: justify;
+}
+
+.postBlockDiv {
+  /* border-bottom: 1px solid #ddd; */
+  margin: 30px 0px;
+  color: #738a94;
+}
+
+.postTitleDiv {
+  padding-left: 20px;
+}
+
+.postTitleDiv a {
+  color: #15171a;
+
 }

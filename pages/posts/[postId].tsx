@@ -30,20 +30,13 @@ function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }) {
     setEditMode(false)
   }
 
-  let commentsArr = comments.map(c => <div key={c.id}>{c.body}</div>)
+  let commentsArr = comments.map(c => <div key={c.id} className = {s.commentLine}>{c.body}</div>)
 
   return (
     <MainLayout title={title}>
-      <div>
-      <span onClick={() => deletePost(postId)} className = {s.submitSpan}>Delete post</span>
-        {!editMode 
-        ?<span onClick={activateEditMode} className = {s.submitSpan}>Modify post</span>
-      :<span onClick={deactivateEditMode} className = {s.submitSpan}>Cancel</span>
-      }
-      </div>
       {!editMode
-        ? <><h1>{title}</h1>
-          <p>{body}</p></>
+        ? <><h1 className = {s.postTitle}>{title}</h1>
+          <p className = {s.postBody}>{body}</p></>
         : <><h2>Edit post "{title}"</h2>
          <label>Post title</label>
         <div>
@@ -59,10 +52,17 @@ function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }) {
           </div>
         </>
       }
+      <div>
+      <span onClick={() => deletePost(postId)} className = {s.submitSpan}>Delete post</span>
+        {!editMode 
+        ?<span onClick={activateEditMode} className = {s.submitSpan}>Modify post</span>
+      :<span onClick={deactivateEditMode} className = {s.submitSpan}>Cancel</span>
+      }
+      </div>
        {!editMode && <div>
         <AddComment postId = {postId} createCommentAC = {createCommentAC} />
         <div>
-          <div><h2>Lastest comments:</h2></div>
+           <div><h2>Lastest comments:</h2></div>
           {commentsArr}
         </div>
       </div>}

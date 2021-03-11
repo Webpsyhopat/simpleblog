@@ -3,10 +3,13 @@ import { useRouter } from "next/router"
 import styled from "styled-components"
 
 const Textarea = styled.textarea`
-margin: 10px;
-background: #f2f2f2;
-  border: 1px solid gray;
-  border-radius: 3px;
+padding: 5px;
+    border: 2px solid #444;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 400px;
+    cursor: pointer;
 `
 const Span = styled.span`
 display: block;
@@ -18,7 +21,7 @@ width: 50px;
 padding: 5px 10px
 `
 const H2 = styled.h2`
-margin: 10px;
+margin: 40px 10px 10px 10px;
 `
 
 function AddComment({ postId, createCommentAC, ...props }) {

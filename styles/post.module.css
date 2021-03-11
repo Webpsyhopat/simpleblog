@@ -1,3 +1,14 @@
+.postTitle {
+    margin-top: 20px;
+}
+
+.postBody {
+    text-align: justify;
+    margin: 40px 0px;
+    line-height: 28px;
+    font-size: 20px;
+}
+
 .inputTitle, .inputBody {
     padding: 5px;
     border: 2px solid #444;
@@ -9,11 +20,28 @@
 
 .submitSpan {
     padding: 5px 20px;
-    border: 1px solid #444;
+    border: 1px solid #3eb0ef;
     background-color: #fdfdfd;
     border-radius: 6px;
-    margin-top: 10px;
+    /* margin-top: 30px; */
     margin-bottom: 20px;
     margin-right: 20px;
     
+}
+
+.submitSpan:hover {
+cursor: pointer;
+color: #3eb0ef;
+border: 1px solid #000;
+/* text-shadow: 2px 2px #ddd; */
+font-weight: bold;
+box-shadow: 2px 2px 4px #3eb0ef;
+}
+
+.commentLine{
+    margin-top: 20px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #eaeff1;
+    line-height: 24px;
+    font-size: 18px;
 }

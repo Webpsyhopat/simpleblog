@@ -72,7 +72,7 @@ export const getRecentPosts = () => {
 
 export const getCurrentPost = (postId) => {
     return (dispatch) => {
-        PostAPI.getPosts()
+        PostAPI.getPost(postId)
             .then(response => {
                 dispatch(setPosts(response.data));
             })
