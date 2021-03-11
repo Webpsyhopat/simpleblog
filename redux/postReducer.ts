@@ -28,7 +28,7 @@ let initialState = {
     postSuccessfullyUpdated: '',
 }
 
-let postReduce = (state = initialState, action = { type: 'blahblah' }) => {
+let postReduce = (state = initialState, action) => {
     switch (action.type) {
         case SET_RECENT_POSTS:
             return {
