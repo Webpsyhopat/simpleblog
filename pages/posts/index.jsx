@@ -3,16 +3,18 @@ import { useRouter } from "next/router"
 function Posts() {
     const router = useRouter()
     return<>
-       {router.push(`/`)}
+    <span onClick = {() => router.push(`/`)}><h1>Click me to go home =)</h1></span>
+    
+       
        </>
 }
 export default Posts
 
-export async function getStaticProps(context) {
-      return {
-        redirect: {
-          destination: '/',
-          permanent: false,
-        },
-      }
-  }
+// export async function getStaticProps(context) {
+//       return {
+//         redirect: {
+//           destination: '/',
+//           permanent: false,
+//         },
+//       }
+//   }
