@@ -1,4 +1,4 @@
-import * as axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 
 const axiosParams = {
     baseURL: 'https://simple-blog-api.crew.red/',
@@ -17,19 +17,19 @@ export const PostAPI = {
     getPost(postId: number): any {
         return apiRequest.get(`posts/${postId}?_embed=comments`)
     },
-    createPost(title: string, body: string): void {
+    createPost(title: string, body: string): Promise<AxiosResponse<any>> {
         return apiRequest.post('posts', { title, body})
     },
-    updatePost(title: string, body: string, postId: number):void {
+    updatePost(title: string, body: string, postId: number): Promise<AxiosResponse<any>> {
        return apiRequest.put(`posts/${postId}`, { title, body})
     },
-    deletePost(postId: number): void {
+    deletePost(postId: number): Promise<AxiosResponse<any>> {
         return apiRequest.delete(`posts/${postId}`)
     },
     getComments(): any {
         return apiRequest.get('comments')
     },
-    createComment(postId: number, body: string): void {
+    createComment(postId: number, body: string): Promise<AxiosResponse<any>> {
         return apiRequest.post('comments', { postId, body})
     },
 }
