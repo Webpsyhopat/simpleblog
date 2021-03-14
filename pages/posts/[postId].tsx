@@ -79,7 +79,7 @@ export default connect(mapStateToProps, { deletePostAC, updatePostAC, createComm
 type Params = {params:{postId: number}}
 type GetServerSideProps = Promise<{ props: { post: any[]; comments: any[]; }; }>
 
-export async function getServerSideProps({ params }: Params): GetServerSideProps {
+export async function getServerSideProps({ params }: Params): Promise<GetServerSideProps> {
   const postResponse = await PostAPI.getPost(params.postId)
   const post = await postResponse.data
   const commentsResponse = await PostAPI.getComments()
