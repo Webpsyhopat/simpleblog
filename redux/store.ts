@@ -10,7 +10,7 @@ let reducers = combineReducers(
     }
 )
 let store
-function initStore(initialState = undefined) {
+function initStore(initialState) {
     return createStore(
         reducers,
         initialState,

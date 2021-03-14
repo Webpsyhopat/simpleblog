@@ -30,39 +30,41 @@ function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }) {
     setEditMode(false)
   }
 
-  let commentsArr = comments.map(c => <div key={c.id} className = {s.commentLine}>{c.body}</div>)
+  let commentsArr = comments.map(c => <div key={c.id} className={s.commentLine}>{c.body}</div>)
 
   return (
     <MainLayout title={title}>
+      <div>
+        <span onClick={() => deletePost(postId)} className={s.submitSpan}>Delete post</span>
+        {!editMode
+          ? <span onClick={activateEditMode} className={s.submitSpan}>Modify post</span>
+          : <span onClick={deactivateEditMode} className={s.submitSpan}>Cancel</span>
+        }
+      </div>
       {!editMode
-        ? <><h1 className = {s.postTitle}>{title}</h1>
-          <p className = {s.postBody}>{body}</p></>
+        ? <><h1 className={s.postTitle}>{title}</h1>
+          <p className={s.postBody}>{body}</p></>
         : <><h2>Edit post "{title}"</h2>
-         <label>Post title</label>
-        <div>
-          <input type='text' name='title' value={title} 
-          onChange={changeTitle} className = {s.inputTitle}/>
+          <label>Post title</label>
+          <div>
+            <input type='text' name='title' value={title}
+              onChange={changeTitle} className={s.inputTitle} />
           </div>
           <label>Post body</label>
           <div>
-          <textarea name='body' rows={rows} value={body} onChange={changeBody} className = {s.inputBody}/>
+            <textarea name='body' rows={rows} value={body} onChange={changeBody} className={s.inputBody} />
           </div>
           <div>
-          <span onClick={updatePost} className = {s.submitSpan}>Save changes</span>
+            <span onClick={updatePost} className={s.submitSpan}>Save changes</span>
           </div>
         </>
       }
-      <div>
-      <span onClick={() => deletePost(postId)} className = {s.submitSpan}>Delete post</span>
-        {!editMode 
-        ?<span onClick={activateEditMode} className = {s.submitSpan}>Modify post</span>
-      :<span onClick={deactivateEditMode} className = {s.submitSpan}>Cancel</span>
-      }
-      </div>
-       {!editMode && <div>
-        <AddComment postId = {postId} createCommentAC = {createCommentAC} />
+      {!editMode && <div>
+        <AddComment postId={postId} createCommentAC={createCommentAC} />
         <div>
-           <div><h2>Lastest comments:</h2></div>
+          <div><h2 className={s.commentsTitle}>{(commentsArr.length > 0)
+            ? 'Lastest comments:'
+            : 'Your comment may be the first'}</h2></div>
           {commentsArr}
         </div>
       </div>}

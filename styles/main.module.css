@@ -5,8 +5,8 @@
     grid-template-columns: repeat(14, 1fr);
       grid-template-rows: 50px auto;
       grid-template-areas:
-          ". . . h h h h h h h h . . ."
-          ". . . . c c c c c c . . . .";
+          ". . h h h h h h h h h h . ."
+          ". . . c c c c c c c c . . .";
     grid-gap: 20px;
 }
 
