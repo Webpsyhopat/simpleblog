@@ -44,7 +44,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Index)
 
 type GetStaticProps = { props: { posts: any; }; }
 
-export async function getStaticProps(): GetStaticProps {
+export async function getStaticProps(): Promise<GetStaticProps> {
     const response = await PostAPI.getPosts()
     const posts = await response.data.reverse()
     return {
