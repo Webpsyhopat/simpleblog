@@ -7,11 +7,11 @@ import { getRecentPosts } from '../redux/postReducer'
 import { connect } from 'react-redux'
 import { useEffect, useState } from 'react'
 
-function Index({ posts, statePosts, getRecentPosts, ...props }) {
+function Index({ posts, statePosts, getRecentPosts }): JSX.Element {
 
-    let [localPosts, setPosts] = useState(posts)
+    const [localPosts, setPosts] = useState(posts)
 
-    let postsPageData = localPosts.map(p => <PostElement key={p.id} title={p.title} postId={p.id} body={p.body} />)
+    const postsPageData = localPosts.map(p => <PostElement key={p.id} title={p.title} postId={p.id} body={p.body} />)
 
     useEffect(() => {
         getRecentPosts()
@@ -42,7 +42,9 @@ const mapDispatchToProps = { getRecentPosts }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index)
 
-export async function getStaticProps(context) {
+type GetStaticProps = { props: { posts: any; }; }
+
+export async function getStaticProps(): GetStaticProps {
     const response = await PostAPI.getPosts()
     const posts = await response.data.reverse()
     return {

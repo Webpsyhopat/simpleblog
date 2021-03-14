@@ -10,15 +10,13 @@ function AddPost(props) {
 
     const router = useRouter()
 
-    let [title, setTitle] = useState('')
-    let [body, setBody] = useState('')
-
-    let rows = 10
+    const [title, setTitle] = useState('')
+    const [body, setBody] = useState('')
 
     const changeTitle = (e) => setTitle(e.currentTarget.value)
     const changeBody = (e) => setBody(e.currentTarget.value)
     const addPost = async () => {
-       let res = await props.createPostAC(title, body)
+       const res = await props.createPostAC(title, body)
        router.push(`/posts/${res.data.id}`)
     }
 
@@ -34,7 +32,7 @@ function AddPost(props) {
         <label>Post body</label>
         <div>
             <textarea name='body' value={body} 
-            onChange={changeBody} rows={rows}
+            onChange={changeBody}
             placeholder = 'Input post text' 
             className = {s.inputBody}/>
         </div>
@@ -44,7 +42,7 @@ function AddPost(props) {
     </MainLayout>
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
     return {}
   }
   

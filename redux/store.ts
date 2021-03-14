@@ -4,7 +4,7 @@ const { createStore, combineReducers, applyMiddleware } = require("redux");
 const { default: thunkMiddleware} = require ("redux-thunk");
 import {composeWithDevTools} from 'redux-devtools-extension'
 
-let reducers = combineReducers(
+const reducers = combineReducers(
     {
         posts: postReduce,
     }
@@ -14,11 +14,11 @@ function initStore(initialState) {
     return createStore(
         reducers,
         initialState,
-        composeWithDevTools(applyMiddleware(thunkMiddleware)))};
+        composeWithDevTools(applyMiddleware(thunkMiddleware)))}
 
 //Holly Shit
 
-export const initializeStore = (preloadedState) => {
+export const initializeStore = (preloadedState: unknown): void => {
     let _store = store ?? initStore(preloadedState)
   
     // After navigating to a page with an initial Redux state, merge that state
@@ -40,7 +40,7 @@ export const initializeStore = (preloadedState) => {
     return _store
   }
   
-  export function useStore(initialState) {
+  export function useStore(initialState: unknown):void {
     const store = useMemo(() => initializeStore(initialState), [initialState])
     return store
   }

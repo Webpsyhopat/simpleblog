@@ -7,15 +7,13 @@ import { useRouter } from "next/router"
 import AddComment from "../../components/AddComment"
 import s from '../../styles/post.module.css'
 
-function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }) {
+function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }): JSX.Element {
   const router = useRouter()
 
-  let [editMode, setEditMode] = useState(false)
-  let [title, setTitle] = useState(post.title)
-  let [body, setBody] = useState(post.body)
-  let [postId, setpostId] = useState(post.id)
-
-  let rows = 10
+  const [editMode, setEditMode] = useState(false)
+  const [title, setTitle] = useState(post.title)
+  const [body, setBody] = useState(post.body)
+  const [postId, ] = useState(post.id)
 
   const activateEditMode = () => setEditMode(true)
   const deactivateEditMode = () => setEditMode(false)
@@ -30,7 +28,7 @@ function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }) {
     setEditMode(false)
   }
 
-  let commentsArr = comments.map(c => <div key={c.id} className={s.commentLine}>{c.body}</div>)
+  const commentsArr = comments.map(c => <div key={c.id} className={s.commentLine}>{c.body}</div>)
 
   return (
     <MainLayout title={title}>
@@ -44,7 +42,7 @@ function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }) {
       {!editMode
         ? <><h1 className={s.postTitle}>{title}</h1>
           <p className={s.postBody}>{body}</p></>
-        : <><h2>Edit post "{title}"</h2>
+        : <><h2>Edit post {title}</h2>
           <label>Post title</label>
           <div>
             <input type='text' name='title' value={title}
@@ -52,7 +50,7 @@ function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }) {
           </div>
           <label>Post body</label>
           <div>
-            <textarea name='body' rows={rows} value={body} onChange={changeBody} className={s.inputBody} />
+            <textarea name='body' value={body} onChange={changeBody} className={s.inputBody} />
           </div>
           <div>
             <span onClick={updatePost} className={s.submitSpan}>Save changes</span>
@@ -72,13 +70,16 @@ function Post({ post, comments, deletePostAC, updatePostAC, createCommentAC }) {
   )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {}
 }
 
 export default connect(mapStateToProps, { deletePostAC, updatePostAC, createCommentAC })(Post)
 
-export async function getServerSideProps({ params }) {
+type Params = {params:{postId: number}}
+type GetServerSideProps = Promise<{ props: { post: any[]; comments: any[]; }; }>
+
+export async function getServerSideProps({ params }: Params): GetServerSideProps {
   const postResponse = await PostAPI.getPost(params.postId)
   const post = await postResponse.data
   const commentsResponse = await PostAPI.getComments()

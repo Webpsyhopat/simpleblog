@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "dal/axios.js", "pages/_app.js"  ],
+, "dal/axios.ts", "pages/_app.tsx"  ],
   "exclude": [
     "node_modules"
   ]

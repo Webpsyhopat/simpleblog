@@ -1,8 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
 import s from '../styles/main.module.css'
+import {ReactElement} from 'react'
 
-export function MainLayout({ children, title = 'Simple Blog' }) {
+export type CommentProps = {
+    children: ReactElement[]
+    title: string
+}
+
+export function MainLayout({ children, title = 'Simple Blog' }: CommentProps): JSX.Element {
     return (
         <div className = {s.wrapper}>
             <Head>

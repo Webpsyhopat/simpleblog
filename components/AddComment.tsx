@@ -2,16 +2,21 @@ import { useState } from "react"
 import { useRouter } from "next/router"
 import s from '../styles/post.module.css'
 
-function AddComment({ postId, createCommentAC, ...props }) {
+export type CommentProps = {
+    postId: number
+    createCommentAC: CallableFunction
+}
+
+function AddComment({ postId, createCommentAC }: CommentProps): JSX.Element {
 
     const router = useRouter()
 
-    let [id, setpostId] = useState(postId)
-    let [commentBody, setBody] = useState('')
+    const [id, ] = useState(postId)
+    const [commentBody, setBody] = useState('')
 
     const changeBody = (e) => setBody(e.currentTarget.value)
     const AddComment = async () => {
-        let res = await createCommentAC(id, commentBody)
+        const res = await createCommentAC(id, commentBody)
         if (res.status === 201) {
             setBody('')
             router.push(`/posts/${id}`)
