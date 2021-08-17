@@ -1,4 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
+import { Post } from '../interfaces';
 
 const axiosParams = {
     baseURL: 'https://simple-blog-api.crew.red/',
@@ -11,7 +12,7 @@ const axiosParams = {
 const apiRequest = axios.create(axiosParams);
 
 export const PostAPI = {
-    getPosts(): any {
+    getPosts(): Promise<Post[]> {
         return apiRequest.get('posts')
     },
     getPost(postId: number): any {

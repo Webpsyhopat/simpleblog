@@ -42,10 +42,17 @@ const mapDispatchToProps = { getRecentPosts }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index)
 
-type GetStaticProps = { props: { posts: any; }; }
+type Post = {
+  id: number,
+  title: string,
+  body: string
+}
+
+type GetStaticProps = { props: { posts: Post[]; }; }
 
 export async function getStaticProps(): Promise<GetStaticProps> {
     const response = await PostAPI.getPosts()
+    // console.log('resp',response.data)
     const posts = await response.data.reverse()
     return {
         props: { posts },
